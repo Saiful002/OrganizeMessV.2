@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package organizemessv.pkg2;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,6 +20,20 @@ public class Member extends javax.swing.JFrame {
      */
     public Member() {
         initComponents();
+    }
+    
+    //Database Conection
+    public void Connect(){
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/organizemesss","Saiful","Jh123456789");
+            System.out.println(con);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
